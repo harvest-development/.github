@@ -1,0 +1,51 @@
+name: Send Organization Assigned Issues to Slack
+
+on:
+  # schedule:
+  #   - cron: '0 9 * * 1' # 毎週月曜日の9時に実行
+  workflow_dispatch: # 手動でトリガーも可能
+
+jobs:
+  send_issues:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v3
+
+    - name: Set up GitHub CLI
+      uses: actions/setup-gh@v2
+
+    - name: Authenticate GitHub CLI with PAT
+      env:
+        GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      run: |
+        echo $GITHUB_TOKEN | gh auth login --with-token
+
+    - name: Fetch issues assigned to each member
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        MEMBER_LIST: ${{ secrets.MEMBER_LIST }}
+      run: |
+        # カンマで区切られたMEMBER_LISTを配列に変換
+        IFS=',' read -r -a members <<< "$MEMBER_LIST"
+        org_name="harvest-development"
+        for member in "${members[@]}"; do
+          echo "Fetching issues for $member across all repositories in $org_name"
+
+          # GitHub CLIで組織全体のリポジトリに対して、アサインされたIssueを取得
+          issues=$(gh issue list --assignee "$member" --state open --json title,url --jq '.[] | "- \(.title): \(.url)"' --repo "$org_name/*")
+          
+          if [[ -z "$issues" ]]; then
+            issues="No open issues assigned to $member."
+          fi
+
+          # Slackメッセージの準備
+          message="Issues assigned to $member across all repositories:\n$issues"
+          
+          # Slackに送信
+          # curl -X POST -H 'Content-type: application/json' \
+          #  --data "{\"text\": \"$message\"}" \
+          #  "$SLACK_WEBHOOK_URL"
+          echo $message
+        done
