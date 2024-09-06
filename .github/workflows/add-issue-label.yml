@@ -1,9 +1,7 @@
 name: Add ToDo Label to opened issue
 on:
-  issues:
-    types:
-      - reopened
-      - opened
+  workflow_call:
+
 jobs:
   label_issues:
     runs-on: actions-runner
