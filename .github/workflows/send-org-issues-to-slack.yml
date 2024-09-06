@@ -24,8 +24,8 @@ jobs:
 
     - name: Fetch issues assigned to each member
       env:
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        MEMBER_LIST: ${{ secrets.MEMBER_LIST }}
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL_FOR_CHECK_ISSUE }}
+        MEMBER_LIST: ${{ vars.MEMBER_LIST }}
       run: |
         # カンマで区切られたMEMBER_LISTを配列に変換
         IFS=',' read -r -a members <<< "$MEMBER_LIST"
