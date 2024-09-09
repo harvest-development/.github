@@ -4,7 +4,7 @@ on:
     secrets:
       SLACK_WEBHOOK_URL:
         required: true
-      GITHUB_TOKEN:
+      GH_TOKEN:
         required: true
     inputs:
       MEMBER_LIST:
