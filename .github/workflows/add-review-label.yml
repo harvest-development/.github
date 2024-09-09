@@ -1,0 +1,19 @@
+name: Add ReviewNeeded Label
+
+on:
+  workflow_call:
+
+jobs:
+  label_review_needed:
+    runs-on: actions-runner
+    permissions:
+      pull-requests: write
+
+    steps:
+      - name: Add ReviewNeeded Label to Pull Request
+        run: gh pr edit "$PR_NUMBER" --add-label "$LABELS"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          LABELS: ReviewNeeded
