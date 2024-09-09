@@ -8,6 +8,7 @@ jobs:
     runs-on: actions-runner
     permissions:
       pull-requests: write
+      repository-projects: read
 
     steps:
       - name: Add ReviewNeeded Label to Pull Request
