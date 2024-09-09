@@ -9,12 +9,15 @@ jobs:
     permissions:
       pull-requests: write
       repository-projects: read
-
     steps:
       - name: Add ReviewNeeded Label to Pull Request
-        run: gh pr edit "$PR_NUMBER" --add-label "$LABELS"
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_REPO: ${{ github.repository }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-          LABELS: ReviewNeeded
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['ReviewNeeded']
+            })
