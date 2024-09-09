@@ -1,0 +1,30 @@
+name: Nofity Simple Message to Slack
+
+on:
+  workflow_call:
+    secrets:
+      SLACK_WEBHOOK_URL:
+        required: true
+    inputs:
+      text:
+        description: 'message'
+        required: true
+        type: string
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Slack通知の送信
+      uses: slackapi/slack-github-action@v1.27.0
+      if: inputs.text
+      with:
+        payload: |
+          {
+            "text": "${{ inputs.text }}",
+            "blocks": [],
+            "attachments": []
+          }
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+  
