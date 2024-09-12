@@ -37,7 +37,8 @@ jobs:
           let message = '';
 
           if (reviewers.length === 0 ) {
-            throw new Error('レビューアが設定されていません。');
+            console.log('レビューアが設定されていません。');
+            return message;
           }
 
           // GitHub ID と Slack ID の対応付けを行う
@@ -64,7 +65,7 @@ jobs:
           }
     - name: Slack通知の送信
       uses: slackapi/slack-github-action@v1.27.0
-      if: steps.label_and_create_message.outputs.result
+      if: steps.label_and_create_message.outputs.result != ""
       with:
         payload: |
           {
