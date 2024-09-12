@@ -34,6 +34,11 @@ jobs:
           const memberList = process.env.MEMBER_LIST.split(',');
           const reviewers = context.payload.pull_request.requested_reviewers.map(r => r.login);
           let notifyList = [];
+          let message = '';
+
+          if (reviewers.length === 0 ) {
+            throw new Error('レビューアが設定されていません。');
+          }
 
           // GitHub ID と Slack ID の対応付けを行う
           reviewers.forEach(reviewer => {
@@ -53,10 +58,9 @@ jobs:
 
             // Slack通知のためにメッセージをエコー
             console.log(`Slackメッセージ: ${message}`);
-            
             return message
           } else {
-            console.log('レビューアに一致するSlack IDが見つかりませんでした。');
+            throw new Error(`レビュアーのSlack IDが設定されていません。 レビュアー: ${reviewers}`);
           }
     - name: Slack通知の送信
       uses: slackapi/slack-github-action@v1.27.0
