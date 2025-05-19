@@ -1,6 +1,6 @@
 ---
 name: CI/CD Task template
-about: CI/CD用のテンプレートです。
+about: CI/CDタスク用のテンプレートです。
 labels: CI/CD
 assignees: k-noji
 ---
