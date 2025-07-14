@@ -3,6 +3,7 @@ name: Product Planning Add Feature Task template
 about: 企画用機能追加issueのテンプレートです。
 labels: 企画, 機能追加
 assignees: 
+title: 【機能追加】
 ---
 # 内容
 ## 追加したい機能の概要
