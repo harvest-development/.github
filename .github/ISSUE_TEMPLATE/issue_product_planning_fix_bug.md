@@ -1,7 +1,7 @@
 ---
 name: Product Planning Fix Bug Task template
 about: 企画用バグissueのテンプレートです。
-labels: 企画
+labels: 企画, バグ修正
 assignees: 
 ---
 # 内容
