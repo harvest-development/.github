@@ -1,7 +1,7 @@
 ---
-name: Product Planning Improve Task template
+name: Product Planning Add Feature Task template
 about: 企画用機能追加issueのテンプレートです。
-labels: 企画
+labels: 企画, 機能追加
 assignees: 
 ---
 # 内容
