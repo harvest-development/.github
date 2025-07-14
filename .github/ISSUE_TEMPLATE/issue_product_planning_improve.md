@@ -1,7 +1,7 @@
 ---
 name: Product Planning Improve Task template
 about: 企画用機能改善（UI修正、ロジック修正）issueのテンプレートです。
-labels: 企画
+labels: 企画, 機能改善
 assignees: 
 ---
 # 内容
