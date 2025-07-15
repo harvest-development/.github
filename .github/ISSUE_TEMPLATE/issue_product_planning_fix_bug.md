@@ -3,7 +3,6 @@ name: バグ修正用テンプレート
 about: 企画用バグ修正issueのテンプレートです。
 labels: 企画, バグ修正
 assignees: takaoshishido
-projects: ANALYSIS-SHOWCASE
 title: 【バグ修正】
 ---
 # 内容
