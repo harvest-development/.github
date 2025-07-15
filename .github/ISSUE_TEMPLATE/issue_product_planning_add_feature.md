@@ -1,8 +1,8 @@
 ---
-name: Product Planning Add Feature Task template
+name: 機能追加用テンプレート
 about: 企画用機能追加issueのテンプレートです。
 labels: 企画, 機能追加
-assignees: 
+assignees: takaoshishido
 title: 【機能追加】
 ---
 # 内容
@@ -26,6 +26,6 @@ title: 【機能追加】
 <!--（例：2025/04/01）-->
 
 # タスク
-<!-- 任意の内容に書き換えてください。半角スペース2つを先頭につけることで子階層を作成可能です。 -->
+<!-- EMG側で記載します。DMGの方は記載不要。 -->
 - [ ] Task1
   - [ ] Task1の子
