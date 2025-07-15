@@ -1,12 +1,13 @@
 ---
-name: Product Planning Fix Bug Task template
-about: 企画用バグissueのテンプレートです。
+name: バグ修正用テンプレート
+about: 企画用バグ修正issueのテンプレートです。
 labels: 企画, バグ修正
-assignees: 
-title: 【バグ】
+assignees: takaoshishido
+project: ANALYSIS-SHOWCASE
+title: 【バグ修正】
 ---
 # 内容
-## バグの発生内容
+## 事象
 <!-- どういった動作をしたら、どのようなバグが発生したのかの概要を記載してください。 -->
 <!-- 画面上でわかるバグであれば、スクショも貼ってください。 -->
 
@@ -25,6 +26,6 @@ title: 【バグ】
 <!--（例：2025/04/01）-->
 
 # タスク
-<!-- 任意の内容に書き換えてください。半角スペース2つを先頭につけることで子階層を作成可能です。 -->
+<!-- EMG側で記載します。DMGの方は記載不要。 -->
 - [ ] Task1
   - [ ] Task1の子
